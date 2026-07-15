@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seu Kit Premium chegou! — Casinhas de Papel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8F0;
+    --cream-2:#FFEFE0;
+    --pink:#FF6F91;
+    --pink-deep:#D9436F;
+    --pink-soft:#FFE3EC;
+    --brown:#5B3A3A;
+    --brown-soft:#8A6A6A;
+    --mint:#7FD8C4;
+    --mint-soft:#E4FBF6;
+    --yellow:#FFD873;
+    --lavender-soft:#EFE8FB;
+    --white:#FFFFFF;
+    --shadow: 0 10px 30px rgba(217,67,111,0.10);
+    --radius: 26px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--brown);
+    font-family:'Nunito', sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', cursive;
+    color:var(--pink-deep);
+    margin:0 0 .3em 0;
+  }
+  a{text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px;}
+
+  .topbar{
+    background:var(--white);
+    border-bottom:2px dashed var(--pink-soft);
+    padding:16px 0;
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  .logo{font-family:'Baloo 2',cursive;font-weight:700;font-size:1.15rem;color:var(--pink-deep);}
+  .badge{
+    background:var(--yellow);
+    color:var(--brown);
+    font-weight:800;
+    font-size:.8rem;
+    padding:7px 14px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  .hero{
+    text-align:center;
+    padding:52px 20px 30px;
+  }
+  .hero .kicker{
+    display:inline-block;
+    background:var(--pink);
+    color:var(--white);
+    font-weight:800;
+    font-size:.8rem;
+    padding:6px 16px;
+    border-radius:999px;
+    margin-bottom:16px;
+  }
+  .hero h1{font-size:2.1rem;max-width:660px;margin-left:auto;margin-right:auto;}
+  .hero p{
+    color:var(--brown-soft);
+    max-width:540px;
+    margin:14px auto 0;
+    font-size:1.05rem;
+  }
+  .hero .order-note{
+    margin-top:22px;
+    font-size:.85rem;
+    color:var(--brown-soft);
+    background:var(--white);
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:999px;
+    box-shadow:var(--shadow);
+  }
+
+  .section{padding:36px 0;}
+  .section-title{text-align:center;margin-bottom:26px;}
+  .section-title h2{font-size:1.5rem;}
+  .section-title p{color:var(--brown-soft);margin:6px 0 0;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:22px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .card .thumb{
+    aspect-ratio:4/3;
+    overflow:hidden;
+    background:var(--pink-soft);
+  }
+  .card .thumb img{width:100%;height:100%;object-fit:cover;}
+  .card .thumb.icon{
+    display:flex;align-items:center;justify-content:center;
+    font-size:3rem;
+  }
+  .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .card h3{font-size:1.05rem;margin:0;}
+  .card .desc{color:var(--brown-soft);font-size:.88rem;flex:1;}
+  .card .old-price{
+    font-size:.78rem;
+    color:var(--brown-soft);
+    text-decoration:line-through;
+  }
+  .card .free-tag{
+    display:inline-block;
+    background:var(--mint-soft);
+    color:#1c8c74;
+    font-weight:800;
+    font-size:.75rem;
+    padding:4px 10px;
+    border-radius:999px;
+    width:fit-content;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    background:var(--pink);
+    color:var(--white);
+    font-weight:800;
+    font-family:'Baloo 2',cursive;
+    font-size:.95rem;
+    padding:12px 18px;
+    border-radius:999px;
+    box-shadow:0 8px 18px rgba(255,111,145,0.35);
+    transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+
+  .more-card{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:var(--lavender-soft);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:20px;
+    font-family:'Baloo 2',cursive;
+    color:var(--pink-deep);
+    font-weight:700;
+    min-height:100%;
+  }
+
+  .steps{
+    background:var(--white);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:22px;
+  }
+  .step{text-align:center;}
+  .step .emoji{
+    width:56px;height:56px;
+    border-radius:50%;
+    background:var(--mint-soft);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;
+    margin:0 auto 10px;
+  }
+  .step h3{font-size:1rem;margin-bottom:4px;color:var(--brown);font-family:'Baloo 2',cursive;}
+  .step p{font-size:.85rem;color:var(--brown-soft);margin:0;}
+
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    text-align:center;
+    margin-top:10px;
+  }
+  .stats .stat b{
+    display:block;
+    font-family:'Baloo 2',cursive;
+    font-size:1.4rem;
+    color:var(--pink-deep);
+  }
+  .stats .stat span{
+    font-size:.8rem;
+    color:var(--brown-soft);
+  }
+
+  .faq details{
+    background:var(--white);
+    border-radius:16px;
+    padding:16px 20px;
+    margin-bottom:12px;
+    box-shadow:var(--shadow);
+  }
+  .faq summary{
+    font-family:'Baloo 2',cursive;
+    font-weight:600;
+    cursor:pointer;
+    color:var(--brown);
+    list-style:none;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary:before{content:"❓ ";}
+  .faq p{color:var(--brown-soft);font-size:.92rem;margin:10px 0 0;}
+
+  footer{
+    background:var(--white);
+    border-top:2px dashed var(--pink-soft);
+    padding:30px 0;
+    text-align:center;
+    color:var(--brown-soft);
+    font-size:.85rem;
+  }
+  footer a{color:var(--pink-deep);font-weight:700;}
+
+  @media (max-width:600px){
+    .hero h1{font-size:1.6rem;}
+    .stats{grid-template-columns:1fr;gap:8px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <div class="logo">🏠 Kit Casinhas de Papel</div>
+      <div class="badge">⭐ Pacote Premium · Compra confirmada</div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="wrap">
+      <span class="kicker">🎉 VOCÊ GARANTIU O KIT COMPLETO</span>
+      <h1>Parabéns! Seu Kit Premium chegou, mamãe!</h1>
+      <p>Aqui embaixo estão as 12 casinhas, todos os acessórios e os 5 bônus grátis que vêm com o seu pacote. É só clicar, baixar, imprimir e começar a brincadeira hoje.</p>
+      <div class="order-note">📩 Uma cópia deste acesso também foi enviada pro seu e-mail de compra</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>🏠 Suas 12 Casinhas de Boneca Interativa</h2>
+        <p>Baixe cada tema separadamente ou tudo de uma vez</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <div class="thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dgsg3LNd3FR7ooc5W2HVJa8ZoA/hf_20260715_214823_13471471-b049-486b-acae-4855d24ca47b.png" alt="Molde Casinha Doce Lar"></div>
+          <div class="body">
+            <h3>Casinha Doce Lar</h3>
+            <p class="desc">A casinha clássica, com fachada, telhado e chaminé.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-CASINHA-DOCE-LAR.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dgsg3LNd3FR7ooc5W2HVJa8ZoA/hf_20260715_214929_b51492e2-22c7-4fb6-ab6f-888b5639e8da.png" alt="Molde Confeitaria Doces & Cia"></div>
+          <div class="body">
+            <h3>Confeitaria Doces & Cia</h3>
+            <p class="desc">Lojinha de docinhos com vitrine e toldo listrado.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-CONFEITARIA.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dgsg3LNd3FR7ooc5W2HVJa8ZoA/hf_20260715_214939_472515c7-88e2-4f42-9301-f3ab5d61c6df.png" alt="Molde Chalé do Jardim"></div>
+          <div class="body">
+            <h3>Chalé do Jardim</h3>
+            <p class="desc">Casinha cercada de flores, com cercadinho e canteiro.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-CHALE-JARDIM.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb"><img src="assets/casinha_colorida_1.jpg" alt="Pet Shop de Papel"></div>
+          <div class="body">
+            <h3>Pet Shop de Papel</h3>
+            <p class="desc">Lojinha de bichinhos, com fachada azul e amiguinhos na janela.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-PET-SHOP.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="more-card">
+          + 8 temas exclusivos<br>na pasta completa ✨
+        </div>
+
+        <div class="card">
+          <div class="thumb icon" style="background:var(--yellow);">📦</div>
+          <div class="body">
+            <h3>Pasta completa (12 casinhas)</h3>
+            <p class="desc">Todos os temas em um único arquivo, prontos pra imprimir de uma vez.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-PASTA-12-CASINHAS.zip" download>⬇ Baixar tudo (.zip)</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>🛋 Acessórios inclusos</h2>
+        <p>Móveis e bonequinhas pra mobiliar e dar vida às casinhas</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <div class="thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dgsg3LNd3FR7ooc5W2HVJa8ZoA/hf_20260715_215251_03544c0d-d96a-4686-a29a-5bf910e1fc42.png" alt="Molde Móveis de Papel"></div>
+          <div class="body">
+            <h3>Móveis de Papel</h3>
+            <p class="desc">Cama, sofá, mesa e cadeiras de montar pra mobiliar qualquer casinha.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-MOVEIS.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3Dgsg3LNd3FR7ooc5W2HVJa8ZoA/hf_20260715_214951_e694b204-db6a-4bb6-a6af-69017e7cc82b.png" alt="Molde Família de Bonequinhas"></div>
+          <div class="body">
+            <h3>Família de Bonequinhas</h3>
+            <p class="desc">Bonequinhas com roupas, sapatos e acessórios de trocar.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-BONEQUINHAS.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>🎁 Seus 5 bônus grátis</h2>
+        <p>Valor total de R$ 84 — hoje 100% inclusos no seu Premium</p>
+      </div>
+      <div class="grid">
+
+        <div class="card">
+          <div class="thumb icon" style="background:var(--pink-soft);">🧜‍♀️</div>
+          <div class="body">
+            <span class="old-price">De R$ 17</span>
+            <h3>Boneca Sereia</h3>
+            <span class="free-tag">GRÁTIS</span>
+            <p class="desc">Boneca temática com cauda de sereia pra montar e trocar.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-BONECA-SEREIA.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb icon" style="background:var(--lavender-soft);">👩‍🏫</div>
+          <div class="body">
+            <span class="old-price">De R$ 15</span>
+            <h3>Boneca Professora</h3>
+            <span class="free-tag">GRÁTIS</span>
+            <p class="desc">Boneca com roupinhas e acessórios de sala de aula.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-BONECA-PROFESSORA.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb icon" style="background:var(--mint-soft);">💄</div>
+          <div class="body">
+            <span class="old-price">De R$ 15</span>
+            <h3>Kit Maquiagem + Guarda-roupa</h3>
+            <span class="free-tag">GRÁTIS</span>
+            <p class="desc">Acessórios extras de beleza e roupas pra trocar o visual.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-KIT-MAQUIAGEM.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb icon" style="background:var(--yellow);">🍼</div>
+          <div class="body">
+            <span class="old-price">De R$ 17</span>
+            <h3>Kit Baby-Care</h3>
+            <span class="free-tag">GRÁTIS</span>
+            <p class="desc">Bebê de papel com mamadeira, carrinho e acessórios.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-KIT-BABY-CARE.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb icon" style="background:var(--pink-soft);">🚐</div>
+          <div class="body">
+            <span class="old-price">De R$ 20</span>
+            <h3>Kit Trailer Charme</h3>
+            <span class="free-tag">GRÁTIS</span>
+            <p class="desc">Trailer de papel decorado, um cantinho a mais pra brincar.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-TRAILER.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="thumb icon" style="background:var(--cream-2);">📘</div>
+          <div class="body">
+            <h3>Guia de Montagem</h3>
+            <p class="desc">Passo a passo completo de impressão, corte, dobra e colagem.</p>
+            <a class="btn" href="SUBSTITUA-PELO-LINK-GUIA-DE-MONTAGEM.pdf" download>⬇ Baixar PDF</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>🛠 Como montar em 4 passos</h2>
+        <p>Resumo rápido do Guia de Montagem</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="emoji">🖨️</div>
+          <h3>1. Imprima</h3>
+          <p>Escala 100%, papel A4, de preferência 120g ou mais.</p>
+        </div>
+        <div class="step">
+          <div class="emoji">✂️</div>
+          <h3>2. Recorte</h3>
+          <p>Siga as linhas contínuas, com atenção às abas de colagem.</p>
+        </div>
+        <div class="step">
+          <div class="emoji">📐</div>
+          <h3>3. Dobre</h3>
+          <p>Dobre nas linhas tracejadas, se possível com o auxílio de uma régua.</p>
+        </div>
+        <div class="step">
+          <div class="emoji">🎨</div>
+          <h3>4. Monte e brinque</h3>
+          <p>Cole as paredes, depois o telhado, fixe na base e é hora da imaginação!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Você faz parte de um grupo especial</h2>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>+1.200</b><span>famílias atendidas</span></div>
+        <div class="stat"><b>4.9★</b><span>avaliação média</span></div>
+        <div class="stat"><b>7 dias</b><span>garantia total</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="wrap">
+      <div class="section-title">
+        <h2>Perguntas rápidas</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Como funcionam as atualizações semanais?</summary>
+          <p>Novos temas e bônus são adicionados com o tempo — sempre que isso acontecer, você recebe um e-mail com o link atualizado desta mesma página.</p>
+        </details>
+        <details>
+          <summary>Não consigo abrir o arquivo, e agora?</summary>
+          <p>Tente abrir em outro navegador ou baixar o PDF antes de abrir (em vez de visualizar direto no celular). Se persistir, chama a gente no suporte que resolvemos rapidinho.</p>
+        </details>
+        <details>
+          <summary>Ainda estou dentro do prazo de garantia?</summary>
+          <p>Você tem 7 dias corridos a partir da compra para pedir reembolso, sem burocracia. É só responder o e-mail de confirmação da compra.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <p>Kit Casinhas de Papel é um produto digital. Dúvidas: <a href="mailto:suporte@casinhasdepapel.com">suporte@casinhasdepapel.com</a></p>
+      <p>🔒 Compra 100% segura · <a href="#">Política de Privacidade</a> · <a href="#">Termos de Compra</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
